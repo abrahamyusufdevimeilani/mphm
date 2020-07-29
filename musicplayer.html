@@ -1,0 +1,517 @@
+<head>
+
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+	*{font-family:"Quicksand";user-select:none;cursor: default;outline:none;}
+i:active{
+		transition: all 0.1s;
+		transform:scale(1.3);
+		}
+html,
+body {
+	
+  margin: 0;
+  box-sizing: border-box;
+  
+  background: linear-gradient(145deg, #e1f8ff, #bdd1e6);
+    position: relative;
+  
+}
+
+*::selection {
+  background-color: unset;
+}
+
+.player {
+	
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+  width: 330px;
+  height: 530px;
+  
+  
+  border-radius: 21px;
+background: #D2E8FF;
+box-shadow:  6px 6px 12px #BDD1E6, 
+             -6px -6px 12px #EBFFFF;
+         }    
+                     .konten {
+                     	padding:10px;transition: all 0.6s;
+                     }
+        .konten svg{
+padding:10px;
+top:3%;position: absolute;
+width:15px;height:15px;
+
+ border-radius: 50px;
+background: linear-gradient(145deg, #E5FAFF, #CBDAE7);
+box-shadow:  5px 5px 7px #bbcee3, -5px -5px 7px #e9ffff, inset -5px -5px 5px #D2E1EF;
+      
+
+}  
+             
+.konten svg:nth-child(1){
+left:5%;}      
+.konten svg:nth-child(2){
+right:20%;}      
+.konten svg:nth-child(3){
+right:5%;}  
+
+
+
+    
+     .konten svg:hover{
+transition: 399mms ease-in-out;
+
+box-shadow: inset 5px 5px 4px #bfd3e8, 
+            inset -5px -5px 4px #e5fdff;
+            }
+       
+
+.player input[type="range"] {
+  -webkit-appearance: none !important;
+  margin:0;
+  padding: 0px;
+  background: #fff;
+  height: 5px;
+  
+
+  width: 150px;
+  outline: none;
+  
+  overflow: hidden;
+  border-radius: 5px;
+}
+.player input[type="range"]::-ms-fill-lower {
+  background: #f2eae4;
+}
+.player input[type="range"]::-ms-fill-upper {
+  background: #f2eae4;
+}
+.player input[type="range"]::-moz-range-track {
+  border: none;
+  background: #f2eae4;
+}
+.player input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  background: #3C88FF;
+  height: 5px;
+  width: 5px;
+  
+  border-radius: 50%;
+  box-shadow: -100vw 0 0 100vw #3C88FF;
+}
+.player input[type="range"]::-moz-range-thumb {
+  background: #ff3677;
+  height: 8px;
+  width: 8px;
+  border-radius: 100%;
+}
+.player input[type="range"]::-ms-thumb {
+  -webkit-appearance: none !important;
+  background: #ff3677;
+  height: 8px;
+  width: 8px;
+  border-radius: 100%;
+}
+.player .cover {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  top: 50px;
+  transform: translateX(-50%);
+  border: 5px solid #D2E8FF;
+
+
+
+
+
+box-shadow:  17px 17px 34px #a8bacc, 
+             -17px -17px 34px #fcffff;
+             
+             
+             
+             
+}
+.player .cover img {
+  width: 100%;
+  height: 100%;
+  
+  object-fit: cover;
+}
+.player .info {
+  position: absolute;
+  left: 50%;
+  top: 240px;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.player .info .title {
+  font-size: 20px;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 2px;
+}
+.player .info .singer {
+  font-size: 12px;
+  color: #72646f;
+}
+.player .btn-box {
+  position: absolute;
+  top: 330px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.player .btn-box i {
+  font-size: 24px;
+  color: #72646f;
+  margin: -5 30px;
+  transition: 0.6s;
+  padding:10px;
+  
+  border-radius: 50%;
+background: linear-gradient(145deg, #e1f8ff, #bdd1e6);
+box-shadow:  5px 5px 7px #bbcee3, -5px -5px 7px #e9ffff, inset -5px -5px 5px #c5d9ef;
+      
+
+  
+}
+.player .btn-box i.active {
+  color: #4C62F1;background-image: linear-gradient(130deg, #6D7EF1 0%, #445AF1 100%);
+
+
+box-shadow:  4px 4px 9px #788BF1, 
+             -2px -2px 10px #f2ffff, inset -1px -1px 3px #445AF1;
+transition: all 1s;color:white;
+  
+}
+.player .volume-box {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 295px;
+  transform: translateX(-50%);
+  z-index: 1;
+  padding: 0 20px;
+}
+.player .volume-box .volume-down {
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  color: #4C62F1;
+}
+.player .volume-box .volume-up {
+  position: absolute;
+  right: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  color: #4C62F1;
+}
+.player .volume-box .volume-up::selection {
+  background-color: unset;
+}
+.player .volume-box input[type="range"] {
+  height: 5px;
+  width: 150px;
+  margin: 0 0 15px 0;
+}
+.player .volume-box.active {
+  display: block;
+}
+.player .music-box {
+  position: absolute;
+  left: 50%;
+  top: 385px;
+  transform: translateX(-50%);
+}
+.player .music-box input[type="range"] {
+  height: 5px;
+  width: 230px;
+  margin: 0 0 10px 0;
+}
+.player .music-box input[type="range"]::-webkit-slider-thumb {
+  height: 5px;
+  width: 7px;
+}
+.player .music-box .current-time {
+  position: absolute;
+  left: -35px;
+  top: 60%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #72646f;
+}
+.player .music-box .duration {
+  position: absolute;
+  right: -35px;
+  top: 60%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #72646f;
+}
+.player .music-box .play,
+.player .music-box .pause {
+  position: absolute;
+  left: 50%;
+  top: 55px;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  
+  
+  
+  
+border-radius: 50%;
+background: linear-gradient(145deg, #e1f8ff, #bdd1e6);
+box-shadow:  5px 5px 7px #bbcee3, -5px -5px 7px #e9ffff, inset -5px -5px 5px #c5d9ef;
+             
+             
+  transition: all 0.8s;
+}
+.player .music-box .play i,
+.player .music-box .pause i {
+  font-size: 36px;
+  color: #536AF1;
+  position: absolute;
+  left: 50%;transition: all 0.6s;
+  top: 50%;
+  
+  transform: translate(-48%, -50%);
+}
+.player .music-box .pause i {
+  font-size: 32px;color: white;transition: all 0.6s;
+  transform: translate(-50%, -50%);
+}
+
+.player .music-box .pause {
+	background-image: linear-gradient(130deg, #6D7EF1 0%, #445AF1 100%);
+
+
+box-shadow:  4px 4px 9px #8B9BF1, 
+             -8px -8px 11px #f2ffff;
+transition: all 0.6s;
+}
+
+	.nxtprv svg{
+border-radius: 150px;
+border-radius: 150px;
+background: linear-gradient(145deg, #e1f8ff, #bdd1e6);
+box-shadow:  5px 5px 7px #bbcee3, 
+             -5px -5px 7px #e9ffff, inset -5px -5px 5px #c5d9ef;
+            
+             
+	
+	
+	}
+	.nxtprv svg{
+		fill:#536AF1;
+		height:20px;width:20px;position: absolute;
+		}
+	.nxtprv svg:nth-child(1){
+ padding:15px;
+	left:4%;bottom:-230%;
+	}
+	.nxtprv svg:nth-child(2){
+		padding:15px;
+	right:4%;bottom:-230%;
+	}
+	.nxtprv svg:active{
+		background-image: linear-gradient(130deg, #6D7EF1 0%, #445AF1 100%);
+box-shadow:  4px 4px 9px #8B9BF1, 
+             -5px -5px 7px #e9ffff;
+            
+
+
+
+fill: white;
+}
+	
+</style>
+
+<link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' type='text/css'/>
+
+</head>
+    <div class="player">
+   <section class="konten"> 	
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 443.52 443.52" style="enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
+<path d="M143.492,221.863L336.226,29.129c6.663-6.664,6.663-17.468,0-24.132c-6.665-6.662-17.468-6.662-24.132,0l-204.8,204.8
+c-6.662,6.664-6.662,17.468,0,24.132l204.8,204.8c6.78,6.548,17.584,6.36,24.132-0.42c6.387-6.614,6.387-17.099,0-23.712
+L143.492,221.863z" fill="#72646f"/>
+</svg>
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 477.867 477.867" style="enable-background:new 0 0 477.867 477.867;" xml:space="preserve">
+<g>
+<g>
+<path d="M460.8,221.867H185.31c-9.255-36.364-46.237-58.34-82.602-49.085c-24.116,6.138-42.947,24.969-49.085,49.085H17.067
+C7.641,221.867,0,229.508,0,238.934S7.641,256,17.067,256h36.557c9.255,36.364,46.237,58.34,82.602,49.085
+c24.116-6.138,42.947-24.969,49.085-49.085H460.8c9.426,0,17.067-7.641,17.067-17.067S470.226,221.867,460.8,221.867z
+ M119.467,273.067c-18.851,0-34.133-15.282-34.133-34.133c0-18.851,15.282-34.133,34.133-34.133s34.133,15.282,34.133,34.133
+C153.6,257.785,138.318,273.067,119.467,273.067z" fill="#72646f"/>
+</g>
+</g>
+<g>
+<g>
+<path d="M460.8,51.2h-53.623c-9.255-36.364-46.237-58.34-82.602-49.085C300.459,8.253,281.628,27.084,275.49,51.2H17.067
+C7.641,51.2,0,58.841,0,68.267s7.641,17.067,17.067,17.067H275.49c9.255,36.364,46.237,58.34,82.602,49.085
+c24.116-6.138,42.947-24.969,49.085-49.085H460.8c9.426,0,17.067-7.641,17.067-17.067S470.226,51.2,460.8,51.2z M341.334,102.4
+c-18.851,0-34.133-15.282-34.133-34.133s15.282-34.133,34.133-34.133s34.133,15.282,34.133,34.133S360.185,102.4,341.334,102.4z"
+fill="#72646f"/>
+<path d="M460.8,392.534h-87.757c-9.255-36.364-46.237-58.34-82.602-49.085c-24.116,6.138-42.947,24.969-49.085,49.085H17.067
+C7.641,392.534,0,400.175,0,409.6s7.641,17.067,17.067,17.067h224.29c9.255,36.364,46.237,58.34,82.602,49.085
+c24.116-6.138,42.947-24.969,49.085-49.085H460.8c9.426,0,17.067-7.641,17.067-17.067S470.226,392.534,460.8,392.534z
+ M307.2,443.734c-18.851,0-34.133-15.282-34.133-34.133s15.282-34.133,34.133-34.133c18.851,0,34.133,15.282,34.133,34.133
+S326.052,443.734,307.2,443.734z" fill="#72646f"/>
+</svg>
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<circle cx="256" cy="256" r="64" fill="#72646f"/>
+<circle cx="256" cy="448" r="64" fill="#72646f"/>
+<circle cx="256" cy="64" r="64" fill="#72646f"/></svg>
+</section>
+        <div class="cover">
+            <img src="https://hidayatulhikmah.website/wp-content/uploads/private/holdme.jpg" alt="">
+        </div>
+        <div class="info">
+            <div class="title">Hold Me</div>
+            <div class="singer">Abraham Yusuf</div>
+
+        </div>
+        <div class="volume-box">
+            <span class="volume-down"><i class="material-icons">remove</i></span>
+            <input type="range" class="volume-range" step="1" value="80" min="0" max="100"
+                oninput="music.volume = this.value/100">
+            <span class="volume-up"><i class="material-icons">add</i></span>
+        </div>
+        <div class="btn-box">
+            <i class="material-icons repeat" onclick="handleRepeat()">repeat</i>
+            <i class="material-icons favorite active" onclick="handleFavorite()">favorite</i>
+            <i class="material-icons volume" onclick="handleVolume()">volume_up</i>
+        </div>
+        
+        <div class="music-box">
+ <span style="opacity:0;color:#D2E8FF;padding-bottom:40px"/>Play</span>
+            <input type="range" step="1" class="seekbar" value="0" min="0" max="100" oninput="handleSeekBar()">
+
+            <audio class="music-element">
+                <source src="https://hidayatulhikmah.website/wp-content/uploads/private/holdme.mp3" type="audio/mp3">
+            </audio>
+             
+            <span class="current-time">0:0</span><span class="duration">0:0</span>
+           
+ <span class="play" onclick="handlePlay()">	
+ <i class="material-icons">play_arrow</i>   
+            </span>
+            <div class="nxtprv">
+          <svg id="Layer" enable-background="new 0 0 64 64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="m18 54v-44c0-1.104-.896-2-2-2s-2 .896-2 2v44c0 1.104.896 2 2 2s2-.896 2-2z"/><path d="m50 51.996v-39.992c0-1.624-.969-3.074-2.469-3.695-1.502-.622-3.212-.281-4.349.856l-20.096 19.788c-.037.037-.073.075-.107.115-1.297 1.495-1.297 3.749 0 5.243.027.032.056.063.086.093l20.107 20.421c.767.767 1.785 1.174 2.824 1.174.516 0 1.037-.101 1.535-.307 1.5-.622 2.469-2.072 2.469-3.696zm-23.993-20.306 19.992-19.706s.001.006.001.019l.011 40.003z"/></svg>
+            <svg id="Layer" enable-background="new 0 0 64 64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="m50 54v-44c0-1.104-.896-2-2-2s-2 .896-2 2v44c0 1.104.896 2 2 2s2-.896 2-2z"/><path d="m18.001 55.998c1.041 0 2.063-.409 2.838-1.184l20.097-20.41c.03-.03.059-.061.086-.093 1.297-1.495 1.297-3.749 0-5.243-.034-.04-.07-.078-.107-.115l-20.087-19.777c-1.146-1.147-2.856-1.488-4.359-.867-1.5.621-2.469 2.071-2.469 3.695v39.992c0 1.624.969 3.074 2.469 3.695.497.206 1.017.307 1.532.307zm-.001-43.994 19.993 19.686-19.993 20.306z" /></svg>
+             </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+	
+// player
+var music = document.querySelector('.music-element')
+var playBtn = document.querySelector('.play')
+var seekbar = document.querySelector('.seekbar')
+var currentTime = document.querySelector('.current-time')
+var duration = document.querySelector('.duration')
+
+function handlePlay() {
+    if (music.paused) {
+        music.play();
+        playBtn.className = 'pause'
+        playBtn.innerHTML = '<i class="material-icons">pause</i>'
+    } else {
+        music.pause();
+        playBtn.className = 'play'
+        playBtn.innerHTML = '<i class="material-icons">play_arrow</i>'
+    }
+    music.addEventListener('ended', function () {
+        playBtn.className = 'play'
+        playBtn.innerHTML = '<i class="material-icons">play_arrow</i>'
+        music.currentTime = 0
+    });
+}
+
+music.onloadeddata = function () {
+    seekbar.max = music.duration
+    var ds = parseInt(music.duration % 60)
+    var dm = parseInt((music.duration / 60) % 60)
+    duration.innerHTML = dm + ':' + ds
+}
+music.ontimeupdate = function () { seekbar.value = music.currentTime }
+handleSeekBar = function () { music.currentTime = seekbar.value }
+music.addEventListener('timeupdate', function () {
+    var cs = parseInt(music.currentTime % 60)
+    var cm = parseInt((music.currentTime / 60) % 60)
+    currentTime.innerHTML = cm + ':' + cs
+}, false)
+
+
+// like
+var favIcon = document.querySelector('.favorite')
+function handleFavorite() {
+    favIcon.classList.toggle('active');
+}
+
+
+// repeat
+var repIcon = document.querySelector('.repeat')
+
+function handleRepeat() {
+    if (music.loop == true) {
+        music.loop = false
+        repIcon.classList.toggle('active')
+    }
+    else {
+        music.loop = true
+        repIcon.classList.toggle('active')
+    }
+}
+
+// volume
+var volIcon = document.querySelector('.volume')
+var volBox = document.querySelector('.volume-box')
+var volumeRange = document.querySelector('.volume-range')
+var volumeDown = document.querySelector('.volume-down')
+var volumeUp = document.querySelector('.volume-up')
+
+function handleVolume() {
+    volIcon.classList.toggle('active')
+    volBox.classList.toggle('active')
+}
+
+volumeDown.addEventListener('click', handleVolumeDown);
+volumeUp.addEventListener('click', handleVolumeUp);
+
+function handleVolumeDown() {
+    volumeRange.value = Number(volumeRange.value) - 20
+    music.volume = volumeRange.value / 100
+}
+function handleVolumeUp() {
+    volumeRange.value = Number(volumeRange.value) + 20
+    music.volume = volumeRange.value / 100
+}
+
+</script>
